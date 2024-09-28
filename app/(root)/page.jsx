@@ -14,13 +14,18 @@ async function Home() {
   const products = await ApiService.getData("/api/product", "product");
 
   const categories = await ApiService.getData("/api/category", "category");
-  const topCategories = await ApiService.getData("/api/topCategory", "topCategory");
+  const topCategories = await ApiService.getData(
+    "/api/topCategory",
+    "topCategory"
+  );
 
   const sertificate = await db.sertificate.findMany();
   const license = await db.license.findMany();
   const partner = await db.partner.findMany();
   const newsData = await db.news.findMany();
   const reviews = await db.selectReview.findMany();
+  console.log("Reviews: " + reviews);
+
   const currency = await db.currency.findMany();
 
   const banner = await db.banner.findMany();
