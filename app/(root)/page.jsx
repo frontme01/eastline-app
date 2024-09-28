@@ -24,7 +24,6 @@ async function Home() {
   const partner = await db.partner.findMany();
   const newsData = await db.news.findMany();
   const reviews = await db.selectReview.findMany();
-  console.log("Reviews: " + reviews);
 
   const currency = await db.currency.findMany();
 
