@@ -30,7 +30,7 @@ const nextConfig = {
         headers: [
           // {
           //   key: "Cache-Control",
-          //   value: "no-store",
+          //   value: "no-store" , 
           // },
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
