@@ -20,24 +20,35 @@ async function Home() {
   );
 
   // const sertificate = await db.sertificate.findMany();
-  const sertificate = await ApiService.getData("/api/sertificate", "sertificate");
-  const license = await db.license.findMany();
-  const partner = await db.partner.findMany();
+  const sertificate = await ApiService.getData(
+    "/api/sertificate",
+    "sertificate"
+  );
+  // const license = await db.license.findMany();
+  const license = await ApiService.getData("/api/license", "license");
+
+  // const partner = await db.partner.findMany();
+  const partner = await ApiService.getData("/api/partner", "partner");
+
+  // const newsData = await db.news.findMany();
   const newsData = await db.news.findMany();
-  const reviews = await db.selectReview.findMany();
+  const reviews = await ApiService.getData("/api/review", "review");
 
-  const currency = await db.currency.findMany();
+  // const currency = await db.currency.findMany();
+  const currency = await ApiService.getData("/api/currency", "currency");
 
-  const banner = await db.banner.findMany();
+  // const banner = await db.banner.findMany();
+  const banner = await ApiService.getData("/api/banner", "banner");
+
   const bannerProduct = await Promise.all(
     banner.map(async (item) => {
-      const getProducts = await db.product.findMany({
-        where: { id: Number(item.productId) },
-      });
+      const getProducts = await ApiService.getData(
+        `/api/product?id=${Number(item.productId)}`,
+        "product"
+      );
       return { ...item, product: getProducts[0] };
     })
   );
-
   const randomLicense = getRandomItems(license);
 
   const lastProducts = getLastItems(products, 4);
