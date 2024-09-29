@@ -31,7 +31,8 @@ async function Home() {
   const partner = await ApiService.getData("/api/partner", "partner");
 
   // const newsData = await db.news.findMany();
-  const newsData = await db.news.findMany();
+  const newsData = await ApiService.getData("/api/news", "news");
+
   const reviews = await ApiService.getData("/api/review", "review");
 
   // const currency = await db.currency.findMany();

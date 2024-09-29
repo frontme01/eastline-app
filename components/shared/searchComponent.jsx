@@ -12,6 +12,7 @@ import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { ApiService } from "@/lib/api.services";
 
 export default function SearchComponent({ productsData }) {
   const [query, setQuery] = useState("");
@@ -22,8 +23,8 @@ export default function SearchComponent({ productsData }) {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("/api/category");
-        setCategories(res.data.data);
+        const res = await ApiService.getData("/api/category","category");
+        setCategories(res);
       } catch (error) {
         console.error("Failed to fetch categories", error);
       }

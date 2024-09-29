@@ -10,9 +10,13 @@ import { HeaderDropdown } from "./header-dropdown";
 import HeroTitle from "./hero-title";
 import Container from "./container";
 import { usePathname, useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { revalidateAllData } from "@/lib/revalidate";
 
 export default function Home({ topCategories, productsData }) {
-
+  const handleClearCache=()=>{
+    revalidateAllData()
+  }
   const pathname = usePathname();
   return (
     <Suspense>
@@ -87,6 +91,9 @@ export default function Home({ topCategories, productsData }) {
         </Container>
       </nav>
       <HeroTitle />
+      <Button className="mt-20" onClick={handleClearCache}>
+        Clear cashed
+      </Button>
     </Suspense>
   );
 }
