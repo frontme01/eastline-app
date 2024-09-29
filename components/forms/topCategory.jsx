@@ -41,15 +41,15 @@ const TopCategoryForm = () => {
         await axios.post("/api/topCategory", values);
         toast.success("Верхняя категория создана успешно!");
       }
-
-      revalidateAll("changeTopCategory");
-      revalidateAll("topCategory");
       form.reset();
       setIsLoading(false);
     } catch (error) {
       console.log(error);
       toast.error("Что то пошло не так. Пожалуйста, повторите попытку позже.");
       setIsLoading(false);
+    } finally {
+      revalidateAll("changeTopCategory");
+      revalidateAll("topCategory");
     }
   };
 
