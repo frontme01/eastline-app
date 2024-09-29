@@ -16,7 +16,7 @@ import { SelectItem } from "../ui/select";
 import DropTarget from "../shared/fileDnd";
 import { sanitizeString, supabase } from "@/lib/utils";
 import Todo from "../shared/note/NotePicker";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 
 const ProductForm = ({ categories }) => {
   const router = useRouter();
@@ -124,8 +124,8 @@ const ProductForm = ({ categories }) => {
       }
 
       form.reset();
-      revalidatePath("product");
-      revalidatePath("changeProduct");
+      revalidateAll("product");
+      revalidateAll("changeProduct");
       setImages([]);
       setIsLoading(false);
       setContent("");

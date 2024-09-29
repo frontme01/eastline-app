@@ -19,7 +19,8 @@ async function Home() {
     "topCategory"
   );
 
-  const sertificate = await db.sertificate.findMany();
+  // const sertificate = await db.sertificate.findMany();
+  const sertificate = await ApiService.getData("/api/sertificate", "sertificate");
   const license = await db.license.findMany();
   const partner = await db.partner.findMany();
   const newsData = await db.news.findMany();

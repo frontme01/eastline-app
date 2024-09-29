@@ -24,7 +24,7 @@ import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useEvent } from "@/store/event";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 
 const DeleteItem = ({ payment }) => {
   const { setReflesh } = useEvent();
@@ -58,7 +58,7 @@ const DeleteItem = ({ payment }) => {
     }
   };
   const handleDelete = () => {
-    revalidatePath(
+    revalidateAll(
       `${
         pathname.split("/")[2].slice(6).toLowerCase().slice(0, 1) +
         pathname.split("/")[2].slice(6).slice(1)

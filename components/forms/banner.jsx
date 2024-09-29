@@ -17,7 +17,7 @@ import DropTarget from "../shared/fileDnd";
 import { sanitizeString, supabase } from "@/lib/utils";
 import { SelectItem } from "../ui/select";
 import { topCategory } from "../tableColumns/topCategory";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 
 const BannerForm = ({ products, categories }) => {
   const router = useRouter();
@@ -120,7 +120,7 @@ const BannerForm = ({ products, categories }) => {
         }
         form.reset();
         setImage([]);
-        revalidatePath("changeBanner");
+        revalidateAll("changeBanner");
       }
     } catch (error) {
       console.error("Error creating partner:", error);

@@ -13,7 +13,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Container from "../shared/container";
 import { ChevronLeft } from "lucide-react";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 import DropTarget from "../shared/fileDnd";
 import { sanitizeString, supabase } from "@/lib/utils";
 
@@ -109,7 +109,7 @@ const SertificateForm = () => {
 
       form.reset();
       setImage([]);
-      revalidatePath("changeSertificate");
+      revalidateAll("changeSertificate");
     } catch (error) {
       console.error("Error creating sertificate:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");

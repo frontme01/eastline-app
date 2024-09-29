@@ -14,7 +14,7 @@ import Container from "../shared/container";
 import { ChevronLeft } from "lucide-react";
 import { SelectItem } from "../ui/select";
 import DropTarget from "../shared/fileDnd";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 import { useEdgeStore } from "@/lib/edgestore";
 
 const ProductForm = () => {
@@ -69,7 +69,7 @@ const ProductForm = () => {
 
       form.reset();
       setImages([]);
-      revalidatePath("changeProduct");
+      revalidateAll("changeProduct");
     } catch (error) {
       console.error("Error creating product:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");

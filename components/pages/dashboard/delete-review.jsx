@@ -23,7 +23,7 @@ import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useEvent } from "@/store/event";
-import { revalidatePath } from "@/lib/revalidate";
+import { revalidateAll } from "@/lib/revalidate";
 
 const DeleteItemReview = ({ payment, path }) => {
   const { tableSelectReview, tableReview, setTableReview, setReflesh } =
@@ -53,7 +53,7 @@ const DeleteItemReview = ({ payment, path }) => {
     }
   };
   const handleDelete = () => {
-    revalidatePath(`selectReview`);
+    revalidateAll(`selectReview`);
     const callFunction = deleteItem(payment);
     if (path === "review") {
       const filterData = tableReview.filter((c) => +c.id !== +payment.id);
