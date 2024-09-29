@@ -110,6 +110,7 @@ const SertificateForm = () => {
       form.reset();
       setImage([]);
       revalidateAll("changeSertificate");
+      revalidateAll("sertificate");
     } catch (error) {
       console.error("Error creating sertificate:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
