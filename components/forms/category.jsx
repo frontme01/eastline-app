@@ -117,13 +117,13 @@ const CategoryForm = () => {
 
       form.reset();
       setImage([]);
-      revalidateAll("changeCategory");
-      revalidateAll("category");
     } catch (error) {
       console.error("Error creating category:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
     } finally {
       setIsLoading(false);
+      revalidateAll("changeCategory");
+      revalidateAll("category");
     }
   };
 

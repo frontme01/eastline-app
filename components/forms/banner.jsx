@@ -82,7 +82,6 @@ const BannerForm = ({ products, categories }) => {
 
           uploadedUrl = newPublicUrlData.publicUrl;
         } else {
-
           const { data: newPublicUrlData } = await supabase.storage
             .from("eastLine_images")
             .getPublicUrl(imageName);
@@ -108,7 +107,7 @@ const BannerForm = ({ products, categories }) => {
             image: uploadedUrl ? uploadedUrl : image[0].url,
           });
           toast.success("Партнер изменена успешно!");
-          router.back()
+          router.back();
         } else {
           await axios.post("/api/banner", {
             productId: Number(values.productId),
@@ -120,15 +119,14 @@ const BannerForm = ({ products, categories }) => {
         }
         form.reset();
         setImage([]);
-        revalidateAll("changeBanner");
-      revalidateAll("banner");
-
       }
     } catch (error) {
       console.error("Error creating partner:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
     } finally {
       setIsLoading(false);
+      revalidateAll("changeBanner");
+      revalidateAll("banner");
     }
   };
 

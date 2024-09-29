@@ -105,13 +105,14 @@ const PartnerForm = () => {
 
       form.reset();
       setImage([]);
-      revalidateAll("changepartner");
-      revalidateAll("partner");
+      
     } catch (error) {
       console.error("Error creating partner:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
     } finally {
       setIsLoading(false);
+      revalidateAll("changepartner");
+      revalidateAll("partner");
     }
   };
 

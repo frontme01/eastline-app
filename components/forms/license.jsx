@@ -105,13 +105,13 @@ const LicenseForm = () => {
 
       form.reset();
       setImage([]);
-      revalidateAll("changelicense");
-      revalidateAll("license");
     } catch (error) {
       console.error("Error creating license:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
     } finally {
       setIsLoading(false);
+      revalidateAll("changelicense");
+      revalidateAll("license");
     }
   };
 

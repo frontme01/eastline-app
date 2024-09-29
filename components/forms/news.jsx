@@ -106,13 +106,13 @@ const NewsForm = () => {
 
       form.reset();
       setImage([]);
-      revalidateAll("changenews");
-      revalidateAll("news");
     } catch (error) {
       console.error("Error creating news:", error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
     } finally {
       setIsLoading(false);
+      revalidateAll("changenews");
+      revalidateAll("news");
     }
   };
   useEffect(() => {

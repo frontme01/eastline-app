@@ -141,7 +141,6 @@ export default function SelectReview() {
       if (response.status === 200) {
         setReflesh();
         toast.success("Data submitted successfully");
-        revalidateAll("selectReview");
       } else {
         toast.error("Failed to submit data");
       }
@@ -150,6 +149,8 @@ export default function SelectReview() {
       toast.error("Error submitting data");
     } finally {
       setIsLoading(false); // Reset loading state after the request is completed
+      revalidateAll("selectReview");
+      revalidateAll("review");
     }
   };
 

@@ -124,8 +124,6 @@ const ProductForm = ({ categories }) => {
       }
 
       form.reset();
-      revalidateAll("product");
-      revalidateAll("changeProduct");
       setImages([]);
       setIsLoading(false);
       setContent("");
@@ -133,6 +131,9 @@ const ProductForm = ({ categories }) => {
       console.log(error);
       toast.error("Что-то пошло не так. Пожалуйста, повторите попытку позже.");
       setIsLoading(false);
+    } finally {
+      revalidateAll("product");
+      revalidateAll("changeProduct");
     }
   };
 
