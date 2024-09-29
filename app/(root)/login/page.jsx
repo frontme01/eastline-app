@@ -27,14 +27,6 @@ function Login() {
   });
 
   const onSubmit = async (values) => {
-    const response = await fetch(`/api/product`, {
-      next: { tags: [`product`] },
-      cache: "no-cache",
-      cache: "no-store",
-    });
-    const { data } = await response.json();
-    console.log(data,"data");
-    
     setIsLoading(true);
     try {
       const user = {

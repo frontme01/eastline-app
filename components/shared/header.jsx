@@ -91,9 +91,6 @@ export default function Home({ topCategories, productsData }) {
         </Container>
       </nav>
       <HeroTitle />
-      <Button className="mt-20" onClick={handleClearCache}>
-        Clear cashed
-      </Button>
     </Suspense>
   );
 }
